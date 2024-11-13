@@ -2,37 +2,13 @@
 
 import {TextField, Stack, Typography, Button, Link} from '@mui/material';
 import NextLink from 'next/link';
-import Form from "@/app/components/Form/Form";
-import {useRouter} from "next/navigation";
-import {postData} from "@/app/services/apiService";
-import Cookies from 'js-cookie';
+import Form from "@/components/Form/Form";
+import {useAuth} from "@/hooks/useAuth";
 
 
 function LoginPage() {
-    const router = useRouter();
-
-    const handleFormSubmit = async (formData) => {
-        console.log('Login data:', formData);
-
-        try {
-            // Očekáváme odpověď s tokenem a uživatelskými daty (např. userId, username)
-            const response = await postData('/api/auth/login', formData);
-            const {token, userId, username} = response;
-
-            if (token) {
-                console.log("setting token")
-                // Uložíme token a další data do cookies
-                Cookies.set('authToken', token, {expires: 1, secure: true, sameSite: 'Strict'});
-
-                // Přesměrování na dashboard po úspěšném přihlášení
-                router.push('/app/dashboard');
-            } else {
-                console.error('Unauthorized: Token not found');
-            }
-        } catch (error) {
-            console.error('Error during login:', error);
-        }
-    };
+    const {handleLogin} = useAuth();
+    const handleFormSubmit = async (formData) => handleLogin(formData);
 
     const formFields = {
         username: {label: 'Username', type: 'text'},

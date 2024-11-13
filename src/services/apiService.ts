@@ -1,7 +1,9 @@
 import axios from 'axios';
 
+const URL = 'http://localhost:8080';
+
 const api = axios.create({
-    baseURL: 'http://localhost:8080',  // Základní URL API
+    baseURL: URL,  // Základní URL API
     headers: {
         'Content-Type': 'application/json',
         // Můžeš přidat i autorizační token nebo jiné hlavičky

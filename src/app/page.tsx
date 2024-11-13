@@ -6,7 +6,7 @@ function IndexPage() {
     return (
         <Stack>
             <Typography>Index page</Typography>
-            <Link component={NextLink} href={'app/auth/login'}>
+            <Link component={NextLink} href={'/auth/login'}>
                 Login
             </Link>
         </Stack>

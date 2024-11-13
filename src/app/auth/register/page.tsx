@@ -1,7 +1,7 @@
 "use client"
 import NextLink from "next/link";
 import {Button, Link, Stack, TextField, Typography} from "@mui/material";
-import Form from "@/app/components/Form/Form";
+import Form from "@/components/Form/Form";
 
 function RegisterPage() {
 
